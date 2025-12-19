@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/form.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Login</h1>
+        <form id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit" id="login-button">Login</button>
+        </form>
+        <p>Don't have an account? <a href="/register">Register here</a>.</p>
+        <div id="error-message" style="color: red; margin-top: 10px; display: none;"></div>
+    </div>
+
+    <script>
+        document.querySelector('#login-form').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent form from submitting the default way
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const loginButton = document.getElementById('login-button');
+            const errorMessage = document.getElementById('error-message');
+
+            // Disable the login button to prevent multiple submissions
+            loginButton.disabled = true;
+            loginButton.textContent = 'Logging in...';
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    console.log('Login successful:', result);
+                    window.location.href = result.redirect;
+                } else {
+                    console.error('Login failed:', result);
+                    errorMessage.style.display = 'block';
+                    errorMessage.textContent = result.error || 'Login failed. Please try again.';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'An unexpected error occurred. Please try again later.';
+            } finally {
+                // Re-enable the login button
+                loginButton.disabled = false;
+                loginButton.textContent = 'Login';
+            }
+        });
+    </script>
+</body>
+
+</html>

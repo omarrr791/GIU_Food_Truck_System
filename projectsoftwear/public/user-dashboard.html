@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="css/user-dashboard.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="top-nav">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div class="user-info">
+            <img id="profile-pic" src="default-profile.png" alt="User Profile" class="profile-pic">
+            <span id="user-name">Loading...</span>
+            <span id="user-role">(Role)</span>
+        </div>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <nav class="sidebar" id="menu-container">
+        <button class="close-menu" onclick="toggleMenu()">×</button>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/cart.html">Cart</a></li>
+            <li><a href="/profile.html">Profile</a></li>
+            <li><a href="/help.html">Help & Settings</a></li>
+            <li><a href="/account.html">Your Account</a></li>
+            <li><a href="/logout.html">Sign Out</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Available Products</h1>
+        <div id="filter-bar">
+            <div id="search-bar">
+                <input type="text" id="searchInput" placeholder="Search by name...">
+                <button id="searchButton">Search</button>
+            </div>
+            <div id="filter-options">
+                <label>
+                    Price Range:
+                    <input type="number" id="minPrice" placeholder="Min" />
+                    <input type="number" id="maxPrice" placeholder="Max" />
+                </label>
+                <label>
+                    Category:
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="tools">Tools</option>
+                        <option value="furniture">Furniture</option>
+                    </select>
+                </label>
+                <button id="filterButton">Apply Filters</button>
+            </div>
+        </div>
+        <section id="productList">
+            <!-- Products will be dynamically loaded here -->
+        </section>
+    </main>
+
+    <script src="js/user-dashboard.js"></script>
+</body>
+</html>

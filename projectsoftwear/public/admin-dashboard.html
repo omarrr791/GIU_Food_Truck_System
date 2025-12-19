@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Karla:wght@200..800&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="top-nav">
+        <div class="menu-icon" id="menu-icon">☰ Menu</div>
+        <div class="logo">
+            <img src="logo.png" alt="App Logo" id="logo-img">
+        </div>
+        <div class="user-info">
+            <img src="default-profile.png" alt="User Photo" id="profile-pic">
+            <span id="user-name">Loading...</span>
+            <span id="user-role">(User)</span>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" id="close-btn">&times;</button>
+        <ul id="menu-container">
+            <!-- Menu will load here dynamically -->
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <h1>Admin Dashboard</h1>
+        <div id="search-filter-container">
+            <input type="text" id="search-bar" placeholder="Search for products..." />
+            <select id="price-filter">
+                <option value="">Filter by Price</option>
+                <option value="low-high">Low to High</option>
+                <option value="high-low">High to Low</option>
+            </select>
+            <select id="quantity-filter">
+                <option value="">Filter by Quantity</option>
+                <option value="in-stock">In Stock</option>
+                <option value="out-of-stock">Out of Stock</option>
+            </select>
+        </div>
+
+        <!-- Product Table -->
+        <h2>Product Management</h2>
+        <button id="add-product-btn">Add New Product</button>
+        
+        <table id="product-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="product-list"></tbody>
+        </table>
+    <!-- Add Pagination Buttons Below the Product Table -->
+        <div id="pagination-container">
+            <button id="prev-page" disabled>&lt;</button>
+            <span id="page-info">Page 1</span>
+            <button id="next-page">&gt;</button>
+        </div>
+
+        <!-- Add Product Form -->
+        <div id="add-product-form" style="display:none;">
+            <h3>Add New Product</h3>
+            <form id="product-form" enctype="multipart/form-data">
+                <input type="text" id="product-name" name="name" placeholder="Product Name" required>
+                <input type="text" id="product-description" name="description" placeholder="Product Description" required>
+                <input type="number" id="product-price" name="price" placeholder="Price" required>
+                <input type="number" id="product-quantity" name="quantity" placeholder="Quantity" required>
+                <input type="file" id="product-image" name="image" required>
+                <button type="submit" id="save-product-btn">Add Product</button>
+                <button type="button" id="cancel-add-product-btn">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

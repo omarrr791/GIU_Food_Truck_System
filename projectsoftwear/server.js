@@ -38,8 +38,8 @@ app.use(
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'wood_workshop',
-    password: 'password',
+    database: 'projectSoftwear',
+    password: '1234',
     port: 5432,
 });
 

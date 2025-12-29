@@ -1,9 +1,10 @@
 {
-  "name": "loginform",
+  "name": "projectsoftwear",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
+    
   },
   "author": "",
   "license": "ISC",
